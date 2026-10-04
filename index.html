@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RimbaRent — sewa perlengkapan outdoor berkualitas: tenda, carrier, sleeping bag, dan alat camping untuk setiap petualanganmu.">
+  <title>RimbaRent — Gear Up. Explore More.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+  <!-- ================= HEADER / NAVBAR ================= -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav" aria-label="Navigasi utama">
+        <a class="brand" href="index.html" aria-label="RimbaRent, kembali ke beranda">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3 3 20h18L12 3Z"/><path d="M12 13 8.5 20h7L12 13Z"/>
+            </svg>
+          </span>
+          <span class="brand__name">Rimba<b>Rent</b></span>
+        </a>
+
+        <ul class="nav__menu">
+          <li><a class="nav__link" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="nav__link" href="pages/katalog.html">Katalog</a></li>
+          <li><a class="nav__link" href="pages/tentang.html">Tentang</a></li>
+          <li><a class="nav__link" href="pages/tentang.html#kontak">Kontak</a></li>
+        </ul>
+
+        <div class="nav__actions">
+          <a class="btn btn--primary" href="pages/rental.html">Sewa Sekarang</a>
+          <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-drawer" aria-label="Buka menu navigasi">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Drawer mobile -->
+    <div class="nav__drawer" id="nav-drawer" data-nav-drawer>
+      <div class="container">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="pages/katalog.html">Katalog</a></li>
+          <li><a href="pages/detail.html">Detail Alat</a></li>
+          <li><a href="pages/rental.html">Rental</a></li>
+          <li><a href="pages/tentang.html">Tentang</a></li>
+        </ul>
+        <a class="btn btn--primary btn--block" href="pages/rental.html">Sewa Sekarang</a>
+        <p class="drawer-contact">WhatsApp: 0812-3456-7890 · Senin–Sabtu 08.00–20.00</p>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero hero--placeholder" aria-labelledby="hero-title">
+      <div class="hero__media" aria-hidden="true">
+        <img src="assets/images/hero/hero-mountain.jpg" alt="" onerror="this.style.display='none'">
+      </div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <div class="hero__text">
+          <p class="hero__eyebrow">Rental Alat Outdoor · Sejak 2019</p>
+          <h1 id="hero-title">Siapkan Petualanganmu.</h1>
+          <p class="hero__lead">Sewa perlengkapan outdoor berkualitas untuk menemani setiap perjalananmu — dari tenda sampai carrier, siap pakai dan terawat.</p>
+
+          <div class="hero__cta">
+            <a class="btn btn--accent btn--lg" href="pages/katalog.html">
+              Lihat Katalog
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn--outline-light btn--lg" href="pages/rental.html">Sewa Sekarang</a>
+          </div>
+
+          <dl class="hero__stats">
+            <div class="hero__stat"><b>120+</b><span>Alat siap sewa</span></div>
+            <div class="hero__stat"><b>3.500+</b><span>Penyewa puas</span></div>
+            <div class="hero__stat"><b>4.9/5</b><span>Rating pelanggan</span></div>
+          </dl>
+        </div>
+
+        <figure class="hero__figure">
+          <img src="assets/images/hero/gambar1.jpeg" alt="Dua pendaki berjalan di punggungan gunung saat matahari terbit" onerror="this.style.display='none'">
+          <span class="hero__figure-fallback" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19h18L14 6l-4 6-2-3-5 10Z"/><circle cx="8" cy="6" r="1.6"/></svg>
+            <em>hero-hikers.jpg · 4:3</em>
+          </span>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= KATEGORI ================= -->
+    <section class="section section--paper" aria-labelledby="kategori-title">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">Kategori Alat</span>
+          <h2 id="kategori-title">Semua kebutuhan camping &amp; hiking</h2>
+          <p class="lead center">Pilih dari delapan kategori alat yang paling sering dibutuhkan pendaki — semuanya diperiksa sebelum disewakan.</p>
+        </div>
+
+        <div class="grid categories-grid">
+          <a class="category-card" href="pages/katalog.html#tenda">
+            <div class="category-card__media">
+              <img src="assets/images/categories/tenda-naturehike-4p.jpg" alt="Tenda dome Naturehike berdiri di area perkemahan pegunungan" onerror="this.style.display='none'">
+              <span class="category-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2 20h20L12 4Z"/><path d="M12 12 9 20h6l-3-8Z"/></svg>
+              </span>
+            </div>
+            <div class="category-card__body"><h3>Tenda</h3><span>2 – 4 orang</span></div>
+          </a>
+          <a class="category-card" href="pages/katalog.html#carrier">
+            <div class="category-card__media">
+              <img src="assets/images/categories/carrier-60l.jpg" alt="Carrier atau tas gunung besar 60 liter warna hijau" onerror="this.style.display='none'">
+              <span class="category-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7V6a5 5 0 0 1 10 0v1"/><rect x="4" y="7" width="16" height="13" rx="2.5"/><path d="M9 12h6"/></svg>
+              </span>
+            </div>
+            <div class="category-card__body"><h3>Carrier</h3><span>45 – 65 liter</span></div>
+          </a>
+          <a class="category-card" href="pages/katalog.html#sleeping-bag">
+            <div class="category-card__media">
+              <img src="assets/images/categories/sleeping-bag.jpg" alt="Sleeping bag tergelar di dalam tenda" onerror="this.style.display='none'">
+              <span class="category-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4Z"/><path d="M6 9h12"/></svg>
+              </span>
+            </div>
+            <div class="category-card__body"><h3>Sleeping Bag</h3><span>Hangat &amp; ringkas</span></div>
+          </a>
+          <a class="category-card" href="pages/katalog.html#matras">
+            <div class="category-card__media">
+              <img src="assets/images/categories/matras.jpg" alt="Matras camping digelar di rerumputan" onerror="this.style.display='none'">
+              <span class="category-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="4"/><path d="M7 8v8M17 8v8"/></svg>
+              </span>
+            </div>
+            <div class="category-card__body"><h3>Matras</h3><span>Anti lembap</span></div>
+          </a>
+          <a class="category-card" href="pages/katalog.html#kompor">
+            <div class="category-card__media">
+              <img src="assets/images/categories/kompor.jpg" alt="Kompor portable menyala saat memasak di alam bebas" onerror="this.style.display='none'">
+              <span class="category-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s4 4.5 4 8a4 4 0 0 1-8 0c0-3.5 4-8 4-8Z"/><path d="M5 21h14"/></svg>
+              </span>
+            </div>
+            <div class="category-card__body"><h3>Kompor Outdoor</h3><span>Portable</span></div>
+          </a>
+          <a class="category-card" href="pages/katalog.html#trekking-pole">
+            <div class="category-card__media">
+              <img src="assets/images/categories/trekking-pole.jpg" alt="Trekking pole tertancap di jalur pendakian" onerror="this.style.display='none'">
+              <span class="category-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21 15 3"/><path d="M13 3h4"/><path d="M7 21h4"/></svg>
+              </span>
+            </div>
+            <div class="category-card__body"><h3>Trekking Pole</h3><span>Ringan</span></div>
+          </a>
+          <a class="category-card" href="pages/katalog.html#headlamp">
+            <div class="category-card__media">
+              <img src="assets/images/categories/headlamp.jpg" alt="Headlamp menyala saat malam di perkemahan" onerror="this.style.display='none'">
+              <span class="category-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a8 8 0 0 1 16 0"/><rect x="4" y="10" width="16" height="6" rx="2"/><path d="M8 16v3M16 16v3"/></svg>
+              </span>
+            </div>
+            <div class="category-card__body"><h3>Headlamp</h3><span>Lampu kepala</span></div>
+          </a>
+          <a class="category-card" href="pages/katalog.html#camping">
+            <div class="category-card__media">
+              <img src="assets/images/categories/camping.jpg" alt="Peralatan camping seperti flysheet dan cooking set di basecamp" onerror="this.style.display='none'">
+              <span class="category-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/><path d="M12 14V9"/><path d="M8 9h8"/></svg>
+              </span>
+            </div>
+            <div class="category-card__body"><h3>Peralatan Camping</h3><span>Flysheet, cooking set</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ALAT POPULER ================= -->
+    <section class="section section--cream" aria-labelledby="populer-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Paling Dicari</span>
+          <h2 id="populer-title">Alat populer minggu ini</h2>
+          <p class="lead">Pilihan favorit para pendaki. Harga jelas per hari, status ketersediaan selalu diperbarui.</p>
+        </div>
+
+        <div class="grid products-grid">
+          <!-- P01 -->
+          <article class="product-card">
+            <div class="product-card__media">
+              <img src="assets/images/products/tenda-naturehike-2p.jpg" alt="Tenda Naturehike 2P dome abu-abu di area perkemahan" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <div class="product-card__body">
+              <span class="badge badge--ok product-card__badge"><span class="badge__dot"></span>Tersedia</span>
+              <span class="product-card__cat">Tenda</span>
+              <h3 class="product-card__name">Tenda Naturehike 2P</h3>
+              <div class="product-card__foot">
+                <p class="price">Rp35.000 <small>/ hari</small></p>
+                <a class="btn btn--ghost" href="pages/detail.html">Detail</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- P02 -->
+          <article class="product-card">
+            <div class="product-card__media">
+              <img src="assets/images/products/tenda-naturehike-4p.jpg" alt="Tenda Naturehike 4P dan camping set di alam bebas" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <div class="product-card__body">
+              <span class="badge badge--ok product-card__badge"><span class="badge__dot"></span>Tersedia</span>
+              <span class="product-card__cat">Tenda</span>
+              <h3 class="product-card__name">Tenda Naturehike 4P</h3>
+              <div class="product-card__foot">
+                <p class="price">Rp55.000 <small>/ hari</small></p>
+                <a class="btn btn--ghost" href="pages/detail.html">Detail</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- P04 -->
+          <article class="product-card">
+            <div class="product-card__media">
+              <img src="assets/images/products/carrier-60l.jpg" alt="Carrier Arabas 60 liter warna hijau untuk pendakian" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <div class="product-card__body">
+              <span class="badge badge--ok product-card__badge"><span class="badge__dot"></span>Tersedia</span>
+              <span class="product-card__cat">Carrier</span>
+              <h3 class="product-card__name">Carrier Arabas 60L</h3>
+              <div class="product-card__foot">
+                <p class="price">Rp40.000 <small>/ hari</small></p>
+                <a class="btn btn--ghost" href="pages/detail.html">Detail</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- P03 -->
+          <article class="product-card">
+            <div class="product-card__media">
+              <img src="assets/images/products/carrier-65l.jpg" alt="Carrier Osprey 65 liter warna hitam untuk ekspedisi" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <div class="product-card__body">
+              <span class="badge badge--busy product-card__badge"><span class="badge__dot"></span>Sedang Disewa</span>
+              <span class="product-card__cat">Carrier</span>
+              <h3 class="product-card__name">Carrier Osprey 65L</h3>
+              <div class="product-card__foot">
+                <p class="price">Rp45.000 <small>/ hari</small></p>
+                <a class="btn btn--ghost" href="pages/detail.html">Detail</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="center mt-6">
+          <a class="btn btn--primary btn--lg" href="pages/katalog.html">Lihat semua alat</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= KEUNGGULAN ================= -->
+    <section class="section section--paper" aria-labelledby="keunggulan-title">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">Kenapa RimbaRent</span>
+          <h2 id="keunggulan-title">Sewa tanpa ribet, alat terjamin</h2>
+        </div>
+
+        <div class="grid features-grid">
+          <article class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3>Alat Berkualitas</h3>
+            <p>Peralatan outdoor dirawat dan diperiksa sebelum disewakan, sehingga siap dipakai di medan apa pun.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M5 6h14"/><path d="M5 6a3 3 0 0 0 0 6h14a3 3 0 0 0 0-6"/></svg>
+            </div>
+            <h3>Harga Terjangkau</h3>
+            <p>Harga rental ramah untuk mahasiswa dan komunitas, mulai Rp10.000 per hari tanpa biaya tersembunyi.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+            </div>
+            <h3>Pilihan Lengkap</h3>
+            <p>Berbagai kebutuhan camping dan hiking tersedia — dari tenda, carrier, hingga cooking set lengkap.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+            </div>
+            <h3>Mudah Disewa</h3>
+            <p>Proses pengajuan rental sederhana — pilih alat, tentukan tanggal, ajukan, lalu ambil alatmu.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CARA RENTAL ================= -->
+    <section class="section section--cream" aria-labelledby="cara-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Cara Rental</span>
+          <h2 id="cara-title">Empat langkah, alat siap diambil</h2>
+        </div>
+
+        <div class="grid steps-grid">
+          <article class="step-card">
+            <span class="step-card__num" aria-hidden="true">1</span>
+            <h3>Pilih alat</h3>
+            <p>Telusuri katalog, cek spesifikasi dan status ketersediaan alat yang kamu butuhkan.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-card__num" aria-hidden="true">2</span>
+            <h3>Tentukan tanggal</h3>
+            <p>Tentukan tanggal mulai dan pengembalian sesuai rencana perjalananmu.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-card__num" aria-hidden="true">3</span>
+            <h3>Ajukan rental</h3>
+            <p>Isi form pengajuan. Estimasi biaya langsung terhitung secara otomatis.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-card__num" aria-hidden="true">4</span>
+            <h3>Ambil alat</h3>
+            <p>Konfirmasi via WhatsApp, lalu ambil alat di basecamp kami. Selamat menjelajah!</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="section section--paper" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2 id="cta-title">Sudah siap menjelajah?</h2>
+            <p>Amankan alatmu lebih awal. Stok terbatas di musim pendakian — ajukan rental sekarang, bayar saat pengambilan.</p>
+          </div>
+          <div class="cta-band__actions">
+            <a class="btn btn--accent btn--lg" href="pages/rental.html">Mulai Rental</a>
+            <a class="btn btn--outline-light btn--lg" href="pages/katalog.html">Lihat Katalog</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand__mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 20h18L12 3Z"/><path d="M12 13 8.5 20h7L12 13Z"/></svg>
+            </span>
+            <span class="brand__name">Rimba<b>Rent</b></span>
+          </a>
+          <p>Teman perjalananmu sejak 2019. Sewa perlengkapan outdoor berkualitas dengan harga ramah dan pelayanan cepat.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram RimbaRent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="WhatsApp RimbaRent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.8 7L3 20l1.1-4.9A8 8 0 1 1 20 12Z"/><path d="M8.5 9.5c0 3 2 5 5 5"/></svg></a>
+            <a href="#" aria-label="TikTok RimbaRent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3v10a4 4 0 1 1-4-4"/><path d="M15 7a5 5 0 0 0 5 3"/></svg></a>
+          </div>
+        </div>
+
+        <nav class="footer-col" aria-label="Menu footer">
+          <h4>Jelajahi</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/katalog.html">Katalog Alat</a></li>
+            <li><a href="pages/detail.html">Detail Alat</a></li>
+            <li><a href="pages/rental.html">Rental</a></li>
+            <li><a href="pages/tentang.html">Tentang &amp; Kontak</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Kategori footer">
+          <h4>Kategori</h4>
+          <ul>
+            <li><a href="pages/katalog.html#tenda">Tenda</a></li>
+            <li><a href="pages/katalog.html#carrier">Carrier</a></li>
+            <li><a href="pages/katalog.html#sleeping-bag">Sleeping Bag</a></li>
+            <li><a href="pages/katalog.html#camping">Peralatan Camping</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-col">
+          <h4>Kontak</h4>
+          <ul class="footer-contact">
+            <li><b>WhatsApp:</b> 0812-3456-7890</li>
+            <li><b>Email:</b> halo@rimbarent.id</li>
+            <li><b>Alamat:</b> Jl. Rimba Raya No. 12, Bandung</li>
+            <li><b>Jam:</b> Senin–Sabtu, 08.00–20.00</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span data-year>2026</span> RimbaRent. Prototype akademik — Project 1 Pemrograman Internet.</p>
+        <p>Gear Up. Explore More.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

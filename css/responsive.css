@@ -1,0 +1,206 @@
+/* ==========================================================================
+   RimbaRent — responsive.css
+   Mobile-first overrides. Breakpoint: 1200 / 992 / 768 / 576 (375-430 mobile)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   <= 1200px — Desktop besar
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  :root { --container: 1040px; }
+
+  .categories-grid { grid-template-columns: repeat(4, 1fr); }
+  .products-grid   { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* --------------------------------------------------------------------------
+   <= 992px — Tablet landscape / nav collapse
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  :root { --header-h: 64px; }
+
+  /* Navbar: sembunyikan inline, tampilkan toggle + drawer */
+  .nav__menu,
+  .nav__actions .btn { display: none; }
+  .nav__toggle { display: block; }
+
+  .nav__drawer {
+    display: block;
+    position: fixed;
+    inset: var(--header-h) 0 auto 0;
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    box-shadow: var(--sh-lg);
+    padding: var(--sp-5) var(--gutter) var(--sp-6);
+    transform: translateY(-12px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--t-med), transform var(--t-med), visibility var(--t-med);
+  }
+  .nav__drawer.is-open { opacity: 1; transform: translateY(0); visibility: visible; }
+  .nav__drawer ul { display: grid; gap: var(--sp-1); }
+  .nav__drawer a {
+    display: block;
+    padding: var(--sp-3) var(--sp-2);
+    font-size: var(--fs-md);
+    font-weight: 500;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+    transition: color var(--t-fast), transform var(--t-fast);
+  }
+  .nav__drawer a:hover { color: var(--earth); transform: translateX(4px); }
+  .nav__drawer a[aria-current="page"] { color: var(--dark); font-weight: 600; }
+  .nav__drawer .btn { margin-top: var(--sp-5); }
+  .nav__drawer .drawer-contact {
+    margin-top: var(--sp-5);
+    padding-top: var(--sp-5);
+    border-top: 1px solid var(--rule);
+    font-size: var(--fs-sm);
+    color: var(--muted);
+  }
+
+  /* Grid */
+  .categories-grid { grid-template-columns: repeat(3, 1fr); }
+  .products-grid   { grid-template-columns: repeat(3, 1fr); }
+  .features-grid,
+  .steps-grid      { grid-template-columns: repeat(2, 1fr); }
+
+  /* Layout */
+  .detail-layout { grid-template-columns: 1fr; }
+  .detail-gallery { position: static; }
+  .detail-media-first { order: -1; }
+
+  /* Hero: split → satu kolom, gambar turun ke bawah teks */
+  .hero { min-height: auto; align-items: stretch; }
+  .hero__inner { grid-template-columns: 1fr; align-items: start; }
+  .hero__figure { max-width: 640px; width: 100%; }
+
+  .form-layout { grid-template-columns: 1fr; }
+  .estimate { position: static; }
+
+  .contact-grid { grid-template-columns: 1fr; }
+
+  .cta-band { grid-template-columns: 1fr; }
+
+  .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+/* --------------------------------------------------------------------------
+   <= 768px — Tablet portrait
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  :root { --gutter: 1.25rem; }
+
+  .categories-grid { grid-template-columns: repeat(2, 1fr); }
+  .products-grid   { grid-template-columns: repeat(2, 1fr); }
+
+  .about-split { grid-template-columns: 1fr; gap: var(--sp-5); }
+  .about-media { order: -1; }
+
+  .hero { min-height: auto; }
+  .hero__stats { gap: var(--sp-5); }
+  .hero__figure { border-radius: var(--r-md); }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+
+  .detail-price-row .price { font-size: var(--fs-xl); }
+}
+
+/* --------------------------------------------------------------------------
+   <= 576px — Mobile (375 / 430)
+   -------------------------------------------------------------------------- */
+@media (max-width: 576px) {
+  :root { --gutter: 1rem; --header-h: 60px; }
+
+  .section { padding-block: var(--sp-7); }
+
+  /* Grid ke satu kolom */
+  .categories-grid,
+  .products-grid,
+  .features-grid,
+  .steps-grid { grid-template-columns: 1fr; }
+
+  /* Form satu kolom */
+  .form-grid { grid-template-columns: 1fr; }
+
+  /* Hero */
+  .hero { min-height: auto; }
+  .hero h1 { max-width: 100%; }
+  .hero__cta { flex-direction: column; align-items: stretch; }
+  .hero__cta .btn { width: 100%; }
+  .hero__stats { gap: var(--sp-5); padding-top: var(--sp-4); }
+  .hero__stat b { font-size: var(--fs-lg); }
+  .hero__figure { border-radius: var(--r-md); max-width: 100%; }
+
+  /* CTA band */
+  .cta-band { padding: var(--sp-5); border-radius: var(--r-md); }
+  .cta-band__actions .btn { width: 100%; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr; gap: var(--sp-5); }
+  .footer-bottom { flex-direction: column; gap: var(--sp-2); }
+
+  /* Filter bar jadi scroll horizontal */
+  .filter-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: var(--sp-4);
+  }
+  .filter-bar__label { display: none; }
+  .filter-bar .chip { flex: none; scroll-snap-align: start; }
+
+  /* Detail */
+  .detail-figure { aspect-ratio: 1 / 1; }
+  .detail-thumb { width: 64px; height: 52px; }
+  .detail-actions { flex-direction: column; align-items: stretch; }
+  .detail-actions .btn { width: 100%; }
+
+  /* Sheet / heading balance */
+  h1, h2 { text-wrap: balance; }
+
+  /* Touch target */
+  .btn { min-height: 48px; }
+
+  /* Estimation rows */
+  .estimate__total b { font-size: var(--fs-lg); }
+}
+
+/* --------------------------------------------------------------------------
+   <= 380px — Sangat kecil
+   -------------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  :root { --fs-2xl: 2rem; --fs-3xl: 2.4rem; }
+  .hero__stat b { font-size: var(--fs-md); }
+}
+
+/* --------------------------------------------------------------------------
+   Redupkan gerak bila user memilih reduce-motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Print — rapi tanpa nav
+   -------------------------------------------------------------------------- */
+@media print {
+  .site-header,
+  .nav__drawer,
+  .site-footer,
+  .hero__cta,
+  .filter-bar { display: none !important; }
+  /* Print tetap memakai token ter-tint, bukan #fff/#000 murni */
+  body { background: var(--paper); color: var(--ink); }
+}
