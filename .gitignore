@@ -1,0 +1,20 @@
+# ===== AI assistant / tooling (bukan bagian website) =====
+.agents/
+.claude/
+.zcode/
+skills-lock.json
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Editor / IDE =====
+.vscode/
+.idea/
+*.swp
+*~
+
+# ===== Temp / log =====
+*.log
+*.tmp
