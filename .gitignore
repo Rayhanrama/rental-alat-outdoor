@@ -18,3 +18,8 @@ desktop.ini
 # ===== Temp / log =====
 *.log
 *.tmp
+
+# ===== Aset gambar lokal (kini memakai URL eksternal) =====
+# File tetap ada di disk sebagai cadangan, hanya tidak dilacak git agar repo ringan.
+assets/images/categories/
+assets/images/products/

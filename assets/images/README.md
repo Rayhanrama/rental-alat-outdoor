@@ -4,10 +4,25 @@ Website ini dibuat agar tetap terlihat rapi **tanpa gambar**. Setiap elemen
 gambar punya fallback visual (blok berlabel / ikon SVG) dan otomatis disembunyikan
 bila file gambar belum ada (atribut `onerror`).
 
+## ⚠️ Catatan penting (2026)
+
+Foto **kategori** dan **produk** kini memakai **URL eksternal (Unsplash)** agar
+repo ringan — lihat dan ganti `src` langsung di:
+- `index.html` (kategori + alat populer)
+- `pages/katalog.html` (12 produk)
+- `pages/detail.html` (galeri + alat lain)
+
+Foto **hero** dan **tentang** tetap memakai file lokal di folder ini.
+
+Folder `categories/` dan `products/` **tidak lagi dilacak git** (ada di
+`.gitignore`) karena sudah memakai URL eksternal. File lokalnya masih ada di
+disk sebagai cadangan.
+
 ## Cara Memasang Gambar Asli
 
 Letakkan file gambar dengan **nama & folder persis** seperti daftar di bawah,
 lalu ganti/refresh halaman. Tidak perlu mengubah HTML.
+
 
 ### Hero — `assets/images/hero/`
 | Nama file | Rasio | Keterangan |

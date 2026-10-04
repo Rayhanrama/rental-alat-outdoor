@@ -204,14 +204,40 @@
       var days = document.querySelector("[data-estimate='days']");
       var total = document.querySelector("[data-estimate='total']");
 
+      var toolName = select && select.value ? select.options[select.selectedIndex].textContent.trim() : "alat";
+
+      // --- Simpan pengajuan ke riwayat (localStorage) ---
+      var qtyEl = form.querySelector("[data-field='jumlah']");
+      var startEl = form.querySelector("[data-field='mulai']");
+      var endEl = form.querySelector("[data-field='kembali']");
+      var catatanEl = form.querySelector("#catatan");
+      var waEl = form.querySelector("#wa");
+      var emailEl = form.querySelector("#email");
+
+      var record = {
+        id: "R" + Date.now(),
+        nama: nama && nama.value ? nama.value.trim() : "",
+        wa: waEl && waEl.value ? waEl.value.trim() : "",
+        email: emailEl && emailEl.value ? emailEl.value.trim() : "",
+        alat: toolName,
+        jumlah: qtyEl ? Math.max(1, parseInt(qtyEl.value, 10) || 1) : 1,
+        mulai: startEl ? startEl.value : "",
+        kembali: endEl ? endEl.value : "",
+        lamaHari: days ? (parseInt(days.textContent, 10) || 0) : 0,
+        total: total ? total.textContent : formatRupiah(0),
+        catatan: catatanEl && catatanEl.value ? catatanEl.value.trim() : "",
+        status: "menunggu",
+        dibuat: new Date().toISOString()
+      };
+      addRiwayat(record);
+
       if (feedback && feedbackText) {
-        var toolName = select && select.value ? select.options[select.selectedIndex].textContent.trim() : "alat";
         feedbackText.innerHTML =
-          "Terima kasih, <strong>" + (nama && nama.value ? nama.value : "Kak") + "</strong>! " +
+          "Terima kasih, <strong>" + (record.nama ? record.nama : "Kak") + "</strong>! " +
           "Pengajuan sewa <strong>" + toolName + "</strong> " +
           (days ? "(<strong>" + days.textContent + "</strong>) " : "") +
           "dengan estimasi <strong>" + (total ? total.textContent : "-") + "</strong> " +
-          "telah dicatat sebagai <em>prototype</em>. Tim RimbaRent akan menghubungimu via WhatsApp untuk konfirmasi.";
+          "telah dicatat pada <strong>riwayat</strong> di bawah. Tim RimbaRent akan menghubungimu via WhatsApp untuk konfirmasi.";
         feedback.classList.add("is-visible");
         feedback.scrollIntoView({ behavior: "smooth", block: "center" });
       }
@@ -221,6 +247,195 @@
       if (qty) qty.value = 1;
       form.dispatchEvent(new Event("input"));
     });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* 7. Riwayat sewa (localStorage — prototype, tanpa backend)          */
+  /* ------------------------------------------------------------------ */
+  var RIWAYAT_KEY = "rimbarent-rentals";
+
+  function getRiwayat() {
+    try {
+      var raw = window.localStorage.getItem(RIWAYAT_KEY);
+      var list = raw ? JSON.parse(raw) : [];
+      return Array.isArray(list) ? list : [];
+    } catch (err) {
+      return [];
+    }
+  }
+
+  function saveRiwayat(list) {
+    try {
+      window.localStorage.setItem(RIWAYAT_KEY, JSON.stringify(list));
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function addRiwayat(record) {
+    var list = getRiwayat();
+    list.unshift(record);
+    saveRiwayat(list);
+    renderRiwayat();
+  }
+
+  function formatTanggal(iso) {
+    if (!iso) return "—";
+    var d = new Date(iso);
+    if (isNaN(d)) return "—";
+    return d.toLocaleDateString("id-ID", { day: "2-digit", month: "short", year: "numeric" });
+  }
+
+  function statusLabel(status) {
+    if (status === "selesai") return { text: "Selesai", cls: "badge--ok" };
+    if (status === "batal") return { text: "Dibatalkan", cls: "badge--maint" };
+    return { text: "Menunggu Konfirmasi", cls: "badge--busy" };
+  }
+
+  function renderRiwayat() {
+    var listEl = document.querySelector("[data-history-list]");
+    if (!listEl) return;
+    var emptyEl = document.querySelector("[data-history-empty]");
+    var clearBtn = document.querySelector("[data-clear]");
+    var sumCount = document.querySelector("[data-summary-count]");
+    var sumTotal = document.querySelector("[data-summary-total]");
+
+    var list = getRiwayat();
+
+    // Ringkasan
+    if (sumCount) sumCount.textContent = list.length + " pengajuan";
+    if (sumTotal) {
+      var grand = 0;
+      list.forEach(function (r) {
+        var n = parseInt(String(r.total).replace(/[^\d]/g, ""), 10);
+        if (Number.isFinite(n)) grand += n;
+      });
+      sumTotal.textContent = formatRupiah(grand);
+    }
+
+    // Empty state & tombol hapus semua
+    if (emptyEl) emptyEl.hidden = list.length !== 0;
+    if (clearBtn) clearBtn.hidden = list.length === 0;
+
+    // Kartu
+    listEl.innerHTML = "";
+    list.forEach(function (r) {
+      var st = statusLabel(r.status);
+      var card = document.createElement("article");
+      card.className = "history-card";
+      card.setAttribute("data-history-id", r.id);
+
+      card.innerHTML =
+        '<div class="history-card__head">' +
+          '<div>' +
+            '<h3 class="history-card__tool">' + escapeHtml(r.alat) + "</h3>" +
+            '<p class="history-card__date">Diajukan ' + formatTanggal(r.dibuat) + " · " + escapeHtml(r.id) + "</p>" +
+          "</div>" +
+          '<span class="badge ' + st.cls + ' history-card__badge"><span class="badge__dot"></span>' + st.text + "</span>" +
+        "</div>" +
+        '<div class="history-card__rows">' +
+          '<div><span>Jumlah</span><b>' + r.jumlah + " unit</b></div>" +
+          '<div><span>Lama sewa</span><b>' + (r.lamaHari ? r.lamaHari + " hari" : "—") + "</b></div>" +
+          '<div><span>Mulai</span><b>' + formatTanggal(r.mulai) + "</b></div>" +
+          '<div><span>Kembali</span><b>' + formatTanggal(r.kembali) + "</b></div>" +
+          '<div><span>Total estimasi</span><b class="history-card__total">' + escapeHtml(r.total) + "</b></div>" +
+        "</div>" +
+        '<div class="history-card__actions">' +
+          '<button class="btn btn--ghost btn--sm" type="button" data-rebook="' + escapeHtml(r.id) + '">Sewa lagi</button>' +
+          (r.status === "menunggu"
+            ? '<button class="btn btn--ghost btn--sm" type="button" data-done="' + escapeHtml(r.id) + '">Tandai selesai</button>'
+            : "") +
+          '<button class="btn btn--ghost btn--sm history-card__remove" type="button" data-remove="' + escapeHtml(r.id) + '">Hapus</button>' +
+        "</div>";
+
+      listEl.appendChild(card);
+    });
+  }
+
+  function escapeHtml(str) {
+    return String(str == null ? "" : str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function initRiwayat() {
+    var listEl = document.querySelector("[data-history-list]");
+    if (!listEl) return;
+
+    renderRiwayat();
+
+    // Delegasi klik untuk aksi di kartu
+    listEl.addEventListener("click", function (e) {
+      var rebook = e.target.closest("[data-rebook]");
+      var remove = e.target.closest("[data-remove]");
+      var done = e.target.closest("[data-done]");
+
+      if (rebook) {
+        rebookItem(rebook.getAttribute("data-rebook"));
+      } else if (done) {
+        updateStatus(done.getAttribute("data-done"), "selesai");
+      } else if (remove) {
+        var list = getRiwayat().filter(function (r) {
+          return r.id !== remove.getAttribute("data-remove");
+        });
+        saveRiwayat(list);
+        renderRiwayat();
+      }
+    });
+
+    // Hapus semua
+    var clearBtn = document.querySelector("[data-clear]");
+    if (clearBtn) {
+      clearBtn.addEventListener("click", function () {
+        if (window.confirm("Hapus semua riwayat pengajuan? Tindakan ini tidak bisa dibatalkan.")) {
+          saveRiwayat([]);
+          renderRiwayat();
+        }
+      });
+    }
+  }
+
+  function updateStatus(id, status) {
+    var list = getRiwayat().map(function (r) {
+      if (r.id === id) r.status = status;
+      return r;
+    });
+    saveRiwayat(list);
+    renderRiwayat();
+  }
+
+  function rebookItem(id) {
+    var form = document.querySelector("[data-rental-form]");
+    if (!form) return;
+    var r = getRiwayat().filter(function (x) { return x.id === id; })[0];
+    if (!r) return;
+
+    // Cocokkan nama alat ke <option>
+    var select = form.querySelector("[data-field='alat']");
+    if (select) {
+      var opt = Array.prototype.slice.call(select.options).filter(function (o) {
+        return o.textContent.trim() === r.alat;
+      })[0];
+      if (opt) select.value = opt.value;
+    }
+    var qty = form.querySelector("[data-field='jumlah']");
+    if (qty) qty.value = r.jumlah || 1;
+    var catatan = form.querySelector("#catatan");
+    if (catatan) catatan.value = r.catatan || "";
+    var nama = form.querySelector("[data-field='nama']");
+    if (nama && r.nama) nama.value = r.nama;
+    var wa = form.querySelector("#wa");
+    if (wa && r.wa) wa.value = r.wa;
+    var email = form.querySelector("#email");
+    if (email && r.email) email.value = r.email;
+
+    form.dispatchEvent(new Event("input", { bubbles: true }));
+    form.scrollIntoView({ behavior: "smooth", block: "start" });
+    var namaField = form.querySelector("[data-field='nama']");
+    if (namaField) namaField.focus({ preventScroll: true });
   }
 
   /* ------------------------------------------------------------------ */
@@ -237,6 +452,7 @@
     initDetailGallery();
     initEstimate();
     initFormSubmit();
+    initRiwayat();
     initYear();
   });
 })();

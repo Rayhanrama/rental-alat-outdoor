@@ -271,3 +271,7 @@ strong, b { font-weight: 700; }
 .center { text-align: center; margin-inline: auto; }
 .mt-6 { margin-top: var(--sp-6); }
 .mt-7 { margin-top: var(--sp-7); }
+
+/* Pastikan atribut hidden selalu menyembunyikan elemen (menimpa display pada .btn/.grid dll) */
+[hidden] { display: none !important; }
+
